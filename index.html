@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="lib/jquery-2.1.1.js"></script>
+  <script src="lib/handlebars-v1.3.0.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="lib/jquery.mousewheel.min.js"></script>
+  <script src="sticky-table.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/sticky_table.css">
+  <title>Sticky Table</title>
+
+  <script id="table-template" type="text/x-handlebars-template">
+    <div class="clearfix">
+      <div class="table-left">&nbsp;</div>
+      <div class="column-headers table-right">
+        <table>
+          <thead>
+          <tr>
+            {{#each columnHeaders}}
+            <td>{{this}}</td>
+            {{/each}}
+          </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <div class="table-left row-headers">
+        <table>
+          {{#each rowHeaders}}
+          <tr>
+            <td>{{this}}</td>
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+      <div class="table-right main-table">
+        <table>
+          {{#each rows}}
+          <tr>
+            {{#each rowValues}}
+            <td>{{this}}</td>
+            {{/each}}
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+  </script>
+
+</head>
+<body>
+  <div id="table-container">
+  </div>
+</body>
+</html>

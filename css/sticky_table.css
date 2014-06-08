@@ -1,0 +1,41 @@
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.table-left {
+    width: 100px;
+    float: left;
+}
+
+.table-right {
+    width: 500px;
+    float: left;
+    overflow: auto;
+}
+
+.table-right.column-headers {
+    overflow: hidden;
+}
+
+.table-right td {
+    width: 175px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.table-right table {
+    width: 500px;
+    table-layout: fixed;
+}
+
+table, td, th {
+    border: 1px solid black;
+}

@@ -3,7 +3,7 @@ $(function() {
     return "column header" + element;
   });
   var rowHeaders =  _(_.range(2)).map(function(element) {
-    return "row header" + element;
+    return " row headerrow headerrow headerrow headerrow headerrow header" + element;
   });
   var rows = _(_.range(2)).map(function(value) {
     var rowValues = _(_.range(10)).map(function(element) {
@@ -16,7 +16,22 @@ $(function() {
   var template = Handlebars.compile(source);
   $('#table-container').html(template(data));
 
-  function onMouseWheel(event) {
+  var setRowHeight =  function() {
+      $(".row-headers").find("tr").each(function(trIndex, tr) {
+        var headerTrHeight = $(tr).height();
+        var mainTableTr = $(".main-table tr:eq('"+trIndex + "')");
+        var mainTableTrHeight = mainTableTr.height();
+        if(headerTrHeight > mainTableTrHeight) {
+          mainTableTr.css('height', headerTrHeight + 'px');
+        } else {
+          headerTrHeight.css('height', mainTableTrHeight + 'px');
+        }
+      });
+  };
+
+  setRowHeight();
+
+  var onMouseWheel = function(event) {
     event.preventDefault();
     var mouseWheelEvent = event.originalEvent;
     var horizontal = mouseWheelEvent.deltaX;
@@ -26,7 +41,7 @@ $(function() {
     } else {
       $('.main-table').scrollTop($('.main-table').scrollTop() - vertical * 30)
     }
-  }
+  };
 
   $('.main-table').on('scroll', function () {
     $('.column-headers').scrollLeft($(this).scrollLeft());
